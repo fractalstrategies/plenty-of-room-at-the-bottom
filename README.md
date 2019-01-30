@@ -32,5 +32,5 @@ projections regarding molecular machines as accurate as those Leonardo da Vinci 
 ##### To deploy
 - `aws s3 cp build/ s3://theresplentyofroomatthebottom.com/ --recursive`
 
-### To Do
-- Build out Pending Components
+### alltogethernaaw
+- `git add . && git commit -m '' && git push && npm run build && aws s3 rm s3://theresplentyofroomatthebottom.com/ --recursive && aws s3 cp build/ s3://theresplentyofroomatthebottom.com/ --recursive`

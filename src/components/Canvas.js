@@ -1,33 +1,31 @@
 import React from 'react'
 import * as THREE from 'three'
 
+import box from '../meshes/box'
+import lines from '../meshes/lines'
+
 class Canvas extends React.Component {
 
     state = {}
 
     componentDidMount() {
 
-        var camera, scene, renderer
-        var geometry, material, mesh
-
-        camera = new THREE.PerspectiveCamera(70, window.innerWidth / window.innerHeight, 0.01, 10)
-        camera.position.z = 7
-
-        scene = new THREE.Scene()
-
-        geometry = new THREE.BoxGeometry(0.05, 5, 5)
-        material = new THREE.MeshNormalMaterial()
-        mesh = new THREE.Mesh(geometry, material)
-        scene.add(mesh)
-
-        renderer = new THREE.WebGLRenderer({ antialias: true })
+        var renderer = new THREE.WebGLRenderer({ antialias: true })
         renderer.setSize(window.innerWidth, window.innerHeight)
         this.refs.canvas.appendChild(renderer.domElement)
 
+        var camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 1, 500)
+        camera.position.set(0, 0, 100)
+        camera.lookAt(0, 0, 0)
+
+        var scene = new THREE.Scene()
+        scene.add(box)
+        scene.add(lines)
+
         function animate() {
             requestAnimationFrame(animate)
-            // mesh.rotation.x += 0.01
-            mesh.rotation.y += 0.02
+            // box.rotation.x += 0.01
+            box.rotation.y += 0.02
             renderer.render(scene, camera)
         }
         animate()

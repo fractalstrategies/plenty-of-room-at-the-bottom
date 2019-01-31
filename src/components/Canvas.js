@@ -5,7 +5,6 @@ import renderer from '../three/renderer'
 import camera from '../three/camera'
 import gui from '../three/gui'
 import planeGrid from '../three/planeGrid'
-import cube from '../three/cube'
 import lines from '../three/lines'
 import icosahedron from '../three/icosahedron'
 import light from '../three/light'
@@ -17,21 +16,23 @@ class Canvas extends React.Component {
     componentDidMount() {
 
         this.refs.canvas.appendChild(renderer.domElement)
-
         var scene = new THREE.Scene()
+
+        const icosahedron1 = icosahedron(-10)
+        const icosahedron2 = icosahedron(10)
         scene.add(planeGrid)
-        scene.add(cube)
         scene.add(lines)
-        scene.add(icosahedron)
+        scene.add(icosahedron1)
+        scene.add(icosahedron2)
         scene.add(light)
-        gui(camera, light, cube)
+        gui(camera, light, icosahedron1)
 
         function animate() {
             requestAnimationFrame(animate)
-            cube.rotation.x += 0.02
-            cube.rotation.y += 0.04
-            icosahedron.rotation.x += 0.02
-            icosahedron.rotation.y += 0.04
+            icosahedron1.rotation.x += 0.02
+            icosahedron1.rotation.y += 0.04
+            icosahedron2.rotation.x += 0.02
+            icosahedron2.rotation.y += 0.04
             renderer.render(scene, camera)
         }
         animate()

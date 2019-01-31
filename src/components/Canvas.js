@@ -1,8 +1,11 @@
 import React from 'react'
 import * as THREE from 'three'
 
-import box from '../meshes/box'
-import lines from '../meshes/lines'
+import renderer from '../three/renderer'
+import camera from '../three/camera'
+import box from '../three/box'
+import lines from '../three/lines'
+import light from '../three/light'
 
 class Canvas extends React.Component {
 
@@ -10,17 +13,12 @@ class Canvas extends React.Component {
 
     componentDidMount() {
 
-        var renderer = new THREE.WebGLRenderer({ antialias: true })
-        renderer.setSize(window.innerWidth, window.innerHeight)
         this.refs.canvas.appendChild(renderer.domElement)
-
-        var camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 1, 500)
-        camera.position.set(0, 0, 100)
-        camera.lookAt(0, 0, 0)
-
+        
         var scene = new THREE.Scene()
         scene.add(box)
         scene.add(lines)
+        scene.add(light)
 
         function animate() {
             requestAnimationFrame(animate)

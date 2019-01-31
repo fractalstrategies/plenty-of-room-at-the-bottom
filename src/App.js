@@ -1,7 +1,6 @@
 import React from 'react'
 
 import Header from './components/Header'
-import Atom from './components/Atom'
 import Canvas from './components/Canvas'
 import ToDoList from './components/ToDoList'
 
@@ -14,8 +13,6 @@ class App extends React.Component {
     return (
       <div style={{ textAlign: 'center' }}>
         <Header />
-        <p>a simulation of nanotechnology</p>
-        <Atom />
         <Canvas />
         <ToDoList />
       </div>

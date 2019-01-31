@@ -12,19 +12,23 @@ class Header extends React.Component {
                 display: 'flex',
                 flexDirection: 'row',
                 alignItems: 'center',
-                justifyContent: 'flex-start',
+                justifyContent: 'space-between',
                 color: 'white',
             },
             appLogo: {
-                animation: 'App-logo-spin infinite 20s linear',
+                animation: 'App-logo-spin infinite 1s linear',
                 height: '30px',
             },
         }
 
         return (
             <header style={style.appHeader}>
-                <img src={logo} style={style.appLogo} alt="logo" />
-                <p>There's Plenty of Room at the Bottom</p>
+                <div style={{ display: 'flex', alignItems: 'center', }}>
+                    <img src={logo} style={style.appLogo} alt="logo" />
+                    <p>There's Plenty of Room at the Bottom</p>
+                </div>
+                <p>a simulation of nanotechnology</p>
+                <div></div><div></div>
             </header>
         )
 

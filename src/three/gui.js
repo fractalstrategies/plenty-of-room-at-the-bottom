@@ -1,34 +1,36 @@
 import * as dat from 'dat.gui'
 
-function buildGui(camera, light, icosahedron1, icosahedron2) {
+const buildGui = (vibrate, icosahedron1, icosahedron2, light, camera) => {
+
     const gui = new dat.GUI()
-    var cameraGui = gui.addFolder("camera position")
-    cameraGui.add(camera.position, 'x')
-    cameraGui.add(camera.position, 'y')
-    cameraGui.add(camera.position, 'z')
-    cameraGui.open()
+
+    var optionsGui = gui.addFolder('Options')
+    optionsGui.add(vibrate, 'vibrate')
+    optionsGui.open()
     
-    var cameraGui2 = gui.addFolder("camera projection")
-    cameraGui2.add(camera, "fov")
-    cameraGui2.open()
-    
-    var atom1Gui = gui.addFolder("atom 1 position")
+    var atom1Gui = gui.addFolder('Atom 1 Pos')
     atom1Gui.add(icosahedron1.position, 'x')
     atom1Gui.add(icosahedron1.position, 'y')
     atom1Gui.add(icosahedron1.position, 'z')
     atom1Gui.open()
     
-    var atom2Gui = gui.addFolder("atom 2 position")
+    var atom2Gui = gui.addFolder('Atom 2 Pos')
     atom2Gui.add(icosahedron2.position, 'x')
     atom2Gui.add(icosahedron2.position, 'y')
     atom2Gui.add(icosahedron2.position, 'z')
     atom2Gui.open()
 
-    var lightGui = gui.addFolder("light position")
+    var lightGui = gui.addFolder('Light')
     lightGui.add(light.position, 'x')
     lightGui.add(light.position, 'y')
     lightGui.add(light.position, 'z')
-    lightGui.open()
+
+    var cameraGui = gui.addFolder('Camera')
+    cameraGui.add(camera.position, 'x')
+    cameraGui.add(camera.position, 'y')
+    cameraGui.add(camera.position, 'z')
+    cameraGui.add({fov: 0}, 'fov')
+
 }
 
 export default buildGui

@@ -3,12 +3,12 @@ import * as THREE from 'three'
 
 import Atom from '../components/Atom'
 
-import renderer from '../three/renderer'
-import camera from '../three/camera'
-import gui from '../three/gui'
-import planeGrid from '../three/planeGrid'
-import lines from '../three/lines'
-import light from '../three/light'
+import renderer from './renderer'
+import camera from './camera'
+import gui from './gui'
+import planeGrid from './planeGrid'
+import lines from './lines'
+import light from './light'
 
 class Canvas extends React.Component {
 
@@ -19,20 +19,20 @@ class Canvas extends React.Component {
         this.refs.canvas.appendChild(renderer.domElement)
         var scene = new THREE.Scene()
 
-        var atom1 = new Atom(-10, ['hydrogen', 1, 1, 0, 'up', '1p'])
-        var atom2 = new Atom(10, ['hydrogen', 1, 1, 0, 'up', '1p'])
+        var atom1 = new Atom({ offsetX: -10, other: ['hydrogen', 1, 1, 0, 'up', '1p']})
+        var atom2 = new Atom({ offsetX: 10, other: ['hydrogen', 1, 1, 0, 'up', '1p']})
         atom1.addToScene(scene)
         atom2.addToScene(scene)
 
         scene.add(planeGrid)
         scene.add(lines)
         scene.add(light)
-        gui(camera, light, atom1.mesh, atom2.mesh)
+        gui({vibrate: true}, atom1.mesh, atom2.mesh, light, camera)
 
         function animate() {
             requestAnimationFrame(animate)
-            atom1.spinAtom('up')
-            atom2.spinAtom('up')
+            atom1.animate()
+            atom2.animate()
             renderer.render(scene, camera)
         }
         animate()
@@ -42,7 +42,10 @@ class Canvas extends React.Component {
     render() {
 
         return (
-            <div ref='canvas'></div>
+            <div ref='canvas'>
+            <br />
+                Press 'H' to show/hide GUI
+            </div>
         )
 
     }

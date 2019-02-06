@@ -1,6 +1,6 @@
 import * as dat from 'dat.gui'
 
-function buildGui(camera, light, cube) {
+function buildGui(camera, light, icosahedron1, icosahedron2) {
     const gui = new dat.GUI()
     var cameraGui = gui.addFolder("camera position")
     cameraGui.add(camera.position, 'x')
@@ -12,17 +12,23 @@ function buildGui(camera, light, cube) {
     cameraGui2.add(camera, "fov")
     cameraGui2.open()
     
+    var atom1Gui = gui.addFolder("atom 1 position")
+    atom1Gui.add(icosahedron1.position, 'x')
+    atom1Gui.add(icosahedron1.position, 'y')
+    atom1Gui.add(icosahedron1.position, 'z')
+    atom1Gui.open()
+    
+    var atom2Gui = gui.addFolder("atom 2 position")
+    atom2Gui.add(icosahedron2.position, 'x')
+    atom2Gui.add(icosahedron2.position, 'y')
+    atom2Gui.add(icosahedron2.position, 'z')
+    atom2Gui.open()
+
     var lightGui = gui.addFolder("light position")
     lightGui.add(light.position, 'x')
     lightGui.add(light.position, 'y')
     lightGui.add(light.position, 'z')
     lightGui.open()
-    
-    var cubeGui = gui.addFolder("cube position")
-    cubeGui.add(cube.position, 'x')
-    cubeGui.add(cube.position, 'y')
-    cubeGui.add(cube.position, 'z')
-    cubeGui.open()
 }
 
 export default buildGui

@@ -18,14 +18,12 @@ class Canvas extends React.Component {
         this.refs.canvas.appendChild(renderer.domElement)
         var scene = new THREE.Scene()
 
-        const icosahedron1 = icosahedron(-10)
-        const icosahedron2 = icosahedron(10)
+        const icosahedron1 = icosahedron(scene, -10)
+        const icosahedron2 = icosahedron(scene, 10)
         scene.add(planeGrid)
         scene.add(lines)
-        scene.add(icosahedron1)
-        scene.add(icosahedron2)
         scene.add(light)
-        gui(camera, light, icosahedron1)
+        gui(camera, light, icosahedron1, icosahedron2)
 
         function animate() {
             requestAnimationFrame(animate)

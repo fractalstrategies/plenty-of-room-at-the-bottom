@@ -1,6 +1,8 @@
 import React from 'react'
 import * as THREE from 'three'
 
+import Atom from '../components/Atom'
+
 import renderer from '../three/renderer'
 import camera from '../three/camera'
 import gui from '../three/gui'
@@ -14,6 +16,9 @@ class Canvas extends React.Component {
     state = {}
 
     componentDidMount() {
+
+        var atom = new Atom('hydrogen')
+        atom.sayHi()
 
         this.refs.canvas.appendChild(renderer.domElement)
         var scene = new THREE.Scene()

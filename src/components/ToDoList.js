@@ -1,124 +1,122 @@
 import React from 'react'
-import { List, ListItem, ListItemIcon, ListItemText, Collapse } from '@material-ui/core'
+import { List, ListItem, ListItemIcon, ListItemText, Collapse, Checkbox } from '@material-ui/core'
 import ListIcon from '@material-ui/icons/List'
-import CheckBoxOutlineBlankIcon from '@material-ui/icons/CheckBoxOutlineBlank'
-// import PropTypes from 'prop-types'
 
 class ToDoList extends React.Component {
 
     state = {
         categories: {
             'canvas': [
-                '2d now, 3d later',
-                'scale display, controls',
-                'scale comparisons: human, cat, ant, tick, cell, transistor/protein, molecule, atom',
-                'geometry, leverage, chemical bonding, statistical mechanics',
-                'heat, stress, current',
+                { task: '3d scene, camera, renderer', completed: true },
+                { task: 'scale display, controls', completed: false },
+                { task: 'scale comparisons: human, cat, ant, tick, cell, transistor/protein, molecule, atom', completed: false },
+                { task: 'geometry, leverage, chemical bonding, statistical mechanics', completed: false },
+                { task: 'heat, stress, current', completed: false },
             ],
             'time': [
-                'display, now',
-                'timer, start, stop, reset, repeat',
-                'rate, rate adjustment',
+                { task: 'display, now', completed: false },
+                { task: 'timer, start, stop, reset, repeat', completed: false },
+                { task: 'rate, rate adjustment', completed: false },
             ],
             'atom': [
-                'protons, neutrons, electrons, spin, orbital fields',
-                'color, radius, label',
-                'quantum properties',
+                { task: 'protons, neutrons, electrons, spin, orbital fields', completed: false },
+                { task: 'color, radius, label', completed: false },
+                { task: 'quantum properties', completed: false },
             ],
             'molecule': [
-                'atoms, bonds',
-                'atom arrangement, bond shape/color, label',
-                'shape, size, properties',
-                'conductivity, strength, ',
+                { task: 'atoms, bonds', completed: false },
+                { task: 'atom arrangement, bond shape/color, label', completed: false },
+                { task: 'shape, size, properties', completed: false },
+                { task: 'conductivity, strength, ', completed: false },
             ],
             'tables': [
-                'common orbital fields',
-                'common atoms',
-                'common molecules',
-                'common materials',
-                    'diamond fiber',
-                    'sapphire',
-                    'superconductor',
+                { task: 'common orbital fields', completed: false },
+                { task: 'common atoms', completed: false },
+                { task: 'common molecules', completed: false },
+                { task: 'common materials', completed: false },
+                { task: 'diamond fiber', completed: false },
+                { task: 'sapphire', completed: false },
+                { task: 'superconductor', completed: false },
             ],
             'power supply': [
-                'material, shape, size, mounting',
-                'amps, volts, watts',
-                'rate, control',
-                'charge, discharge',
-                'quantized energy levels/packets',
+                { task: 'material, shape, size, mounting', completed: false },
+                { task: 'amps, volts, watts', completed: false },
+                { task: 'rate, control', completed: false },
+                { task: 'charge, discharge', completed: false },
+                { task: 'quantized energy levels/packets', completed: false },
             ],
             'light source': [
-                'direction, wavelength, luminosity',
-                'intensity, electrons, power',
+                { task: 'direction, wavelength, luminosity', completed: false },
+                { task: 'intensity, electrons, power', completed: false },
             ],
             'scanning electron nanoscope': [
-                'column for electron beam generation',
-                'specimen chamber',
-                'two stage high vacuum pump',
-                'monitor, control',
-                'cover plate, stage, sample holder',
-                'high voltage',
-                'thermionic cathode / negative pole of source',
-                'anode / metallic disk with a central borehole / positive pole of source',
-                'electromagnetic lens',
-                'electromagnetic deflection',
-                'primary electron flow / detector',
-                'point of incidence',
-                'secondary electron flow / detector',
-                'raster scan generator',
-                'control programs',
-                'non-destructive chemical analysis',
+                { task: 'column for electron beam generation', completed: false },
+                { task: 'specimen chamber', completed: false },
+                { task: 'two stage high vacuum pump', completed: false },
+                { task: 'monitor, control', completed: false },
+                { task: 'cover plate, stage, sample holder', completed: false },
+                { task: 'high voltage', completed: false },
+                { task: 'thermionic cathode / negative pole of source', completed: false },
+                { task: 'anode / metallic disk with a central borehole / positive pole of source', completed: false },
+                { task: 'electromagnetic lens', completed: false },
+                { task: 'electromagnetic deflection', completed: false },
+                { task: 'primary electron flow / detector', completed: false },
+                { task: 'point of incidence', completed: false },
+                { task: 'secondary electron flow / detector', completed: false },
+                { task: 'raster scan generator', completed: false },
+                { task: 'control programs', completed: false },
+                { task: 'non-destructive chemical analysis', completed: false },
             ],
             'lithography': [
-                'steps, chemicals, output',
-                'tests',
+                { task: 'steps, chemicals, output', completed: false },
+                { task: 'tests', completed: false },
             ],
             'replicator': [
-                'engines of creation, mechanical self-replicating cell',
-                'overall dimensions, bracing',
-                'pure material input, properties, positioning',
-                'pure output, properties, positioning',
-                'power, continuous processing',
-                'part-making',
-                'instructions written into the walls of the replicator',
-                'scaffold/frame, vascular/corridors, ',
-                'assembler',
-                'disassembler',
+                { task: 'engines of creation, mechanical self-replicating cell', completed: false },
+                { task: 'overall dimensions, bracing', completed: false },
+                { task: 'pure material input, properties, positioning', completed: false },
+                { task: 'pure output, properties, positioning', completed: false },
+                { task: 'power, continuous processing', completed: false },
+                { task: 'part-making', completed: false },
+                { task: 'instructions written into the walls of the replicator', completed: false },
+                { task: 'scaffold/frame, vascular/corridors, ', completed: false },
+                { task: 'assembler', completed: false },
+                { task: 'disassembler', completed: false },
             ],
             'amino acids': [
-                'atoms, molecules, bonds',
-                'size, shape, color, label',
+                { task: 'atoms, molecules, bonds', completed: false },
+                { task: 'size, shape, color, label', completed: false },
             ],
             'proteins': [
-                'base pairs',
+                { task: 'base pairs', completed: false },
             ],
             'nanomachines': [
-                'tests',
-                'repairs',
+                { task: 'tests', completed: false },
+                { task: 'repairs', completed: false },
             ],
             'nanocircuits': [
-                'nanoelectronic switches',
-                'mechanical transistor',
-                'circuits of seven atoms',
+                { task: 'nanoelectronic switches', completed: false },
+                { task: 'mechanical transistor', completed: false },
+                { task: 'circuits of seven atoms', completed: false },
             ],
             'nanocomputer': [
-                'polymer molecule to code information like punched paper tape',
-                'reader to translate patterns to arm motions',
-                'water cooling',
+                { task: 'polymer molecule to code information like punched paper tape', completed: false },
+                { task: 'reader to translate patterns to arm motions', completed: false },
+                { task: 'water cooling', completed: false },
             ],
             'other': [
-                'cell repair machine',
-                'photosynthesis',
-                'lightsail',
-                'spacesuit',
-                'rocket engine',
-                'circulatory system',
+                { task: 'cell repair machine', completed: false },
+                { task: 'photosynthesis', completed: false },
+                { task: 'lightsail', completed: false },
+                { task: 'spacesuit', completed: false },
+                { task: 'rocket engine', completed: false },
+                { task: 'circulatory system', completed: false },
             ],
             'build roadmap': [
-                '1. construct small set of tools',
-                '2. using this, construct smaller set of tools',
-                '3. improve accuracy',
-                '4. #2',
+                { task: '1. construct small set of tools', completed: false },
+                { task: '2. using this, construct smaller set of tools', completed: false },
+                { task: '3. improve accuracy', completed: false },
+                { task: '4. #2', completed: false },
             ],
         },
         openCategories: [],
@@ -154,12 +152,10 @@ class ToDoList extends React.Component {
                 <Collapse in={this.state.openCategories[i]}>
                     <List>
                         {this.state.categories[category].map(item => (
-                            <ListItem key={item}>
-                                <ListItemIcon>
-                                    <CheckBoxOutlineBlankIcon />
-                                </ListItemIcon>
+                            <ListItem key={item.task}>
+                                <Checkbox checked={item.completed} />
                                 <ListItemText>
-                                    {item}
+                                    {item.task}
                                 </ListItemText>
                             </ListItem>
                         ))}
@@ -169,7 +165,7 @@ class ToDoList extends React.Component {
         ))
 
         return (
-            <List subheader='Pending Components' style={{ width: '600px', marginLeft: '30%' }}>
+            <List subheader='Components' style={{ width: '600px', marginLeft: '30%' }}>
                 {listCategories}
             </List>
         )
@@ -177,8 +173,5 @@ class ToDoList extends React.Component {
     }
 
 }
-
-// ToDoList.propTypes = {
-// }
 
 export default ToDoList

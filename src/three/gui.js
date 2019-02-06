@@ -1,23 +1,40 @@
 import * as dat from 'dat.gui'
 
-const buildGui = (vibrate, icosahedron1, icosahedron2, light, camera) => {
+const buildGui = (atom1, atom2, light, camera) => {
 
-    const gui = new dat.GUI()
+    const defaultValues = {
+        scale: 'nano',
+        vibrate: true,
+        backgroundColor: 'rgb(230, 255, 255)',
+        atomColor: 'rgb(100, 100, 200)',
+    }
+
+    const gui = new dat.GUI({
+        load: JSON,
+        preset: 'Flow',
+        autoPlace: false,
+    })
 
     var optionsGui = gui.addFolder('Options')
-    optionsGui.add(vibrate, 'vibrate')
+    optionsGui.add(defaultValues, 'scale', ['normal', 'small', 'mini', 'macro', 'micro', 'nano'])
+    optionsGui.add(defaultValues, 'vibrate')
+    optionsGui.addColor(defaultValues, 'backgroundColor')
+    optionsGui.addColor(defaultValues, 'atomColor')
     optionsGui.open()
+
+    var atomsGui = gui.addFolder('Atoms')
+    // atomsGui.open()
     
-    var atom1Gui = gui.addFolder('Atom 1 Pos')
-    atom1Gui.add(icosahedron1.position, 'x')
-    atom1Gui.add(icosahedron1.position, 'y')
-    atom1Gui.add(icosahedron1.position, 'z')
+    var atom1Gui = atomsGui.addFolder('Atom 1 Pos')
+    atom1Gui.add(atom1.position, 'x', -50, 50)
+    atom1Gui.add(atom1.position, 'y', -20, 20)
+    atom1Gui.add(atom1.position, 'z', -400, 40)
     atom1Gui.open()
     
-    var atom2Gui = gui.addFolder('Atom 2 Pos')
-    atom2Gui.add(icosahedron2.position, 'x')
-    atom2Gui.add(icosahedron2.position, 'y')
-    atom2Gui.add(icosahedron2.position, 'z')
+    var atom2Gui = atomsGui.addFolder('Atom 2 Pos')
+    atom2Gui.add(atom2.position, 'x', -50, 50)
+    atom2Gui.add(atom2.position, 'y', -20, 20)
+    atom2Gui.add(atom2.position, 'z', -400, 40)
     atom2Gui.open()
 
     var lightGui = gui.addFolder('Light')
@@ -30,6 +47,10 @@ const buildGui = (vibrate, icosahedron1, icosahedron2, light, camera) => {
     cameraGui.add(camera.position, 'y')
     cameraGui.add(camera.position, 'z')
     cameraGui.add({fov: 0}, 'fov')
+
+    gui.remember({})
+
+    document.getElementById('gui-mount').appendChild(gui.domElement)
 
 }
 

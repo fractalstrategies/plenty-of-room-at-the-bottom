@@ -27,7 +27,7 @@ class Canvas extends React.Component {
         scene.add(planeGrid)
         scene.add(lines)
         scene.add(light)
-        gui({vibrate: true}, atom1.mesh, atom2.mesh, light, camera)
+        gui(atom1.mesh, atom2.mesh, light, camera)
 
         function animate() {
             requestAnimationFrame(animate)
@@ -43,6 +43,7 @@ class Canvas extends React.Component {
 
         return (
             <div ref='canvas'>
+            <div id='gui-mount' style={{ position: 'absolute', top: '50px', right: '0' }}></div>
             <br />
                 Press 'H' to show/hide GUI
             </div>

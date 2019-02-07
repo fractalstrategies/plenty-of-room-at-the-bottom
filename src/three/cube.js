@@ -4,7 +4,7 @@ class Cube {
     
     constructor(cubeDeets) {
 
-        this.geometry = new THREE.BoxGeometry(7, 7, 7)
+        this.geometry = new THREE.BoxGeometry(cubeDeets.size, cubeDeets.size, cubeDeets.size)
         this.material = new THREE.MeshLambertMaterial( { color: 0xfd59d7 } )
         // this.material = new THREE.MeshBasicMaterial( { color: 0x00ff00 } )
         // this.material = new THREE.MeshNormalMaterial()

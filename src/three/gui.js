@@ -1,11 +1,11 @@
 import * as dat from 'dat.gui'
 
-const buildGui = (atom1, atom2, light, camera) => {
+const buildGui = (setSceneBackgroundColor, atom1, atom2, light, camera) => {
 
     const defaultValues = {
         scale: 'nano',
         vibrate: true,
-        backgroundColor: 'rgb(230, 255, 255)',
+        backgroundColor: 'rgb(255, 255, 255)',
         atomColor: 'rgb(100, 100, 200)',
     }
 
@@ -18,9 +18,12 @@ const buildGui = (atom1, atom2, light, camera) => {
     var optionsGui = gui.addFolder('Options')
     optionsGui.add(defaultValues, 'scale', ['normal', 'small', 'mini', 'macro', 'micro', 'nano'])
     optionsGui.add(defaultValues, 'vibrate')
-    optionsGui.addColor(defaultValues, 'backgroundColor')
+    var backgroundColor = optionsGui.addColor(defaultValues, 'backgroundColor')
     optionsGui.addColor(defaultValues, 'atomColor')
-    // optionsGui.open()
+    optionsGui.open()
+    backgroundColor.onChange(value => {
+        setSceneBackgroundColor(value)
+    })
 
     var atomsGui = gui.addFolder('Atoms')
     // atomsGui.open()
@@ -41,7 +44,7 @@ const buildGui = (atom1, atom2, light, camera) => {
     lightGui.add(light.position, 'x')
     lightGui.add(light.position, 'y')
     lightGui.add(light.position, 'z')
-    lightGui.open()
+    // lightGui.open()
 
     var cameraGui = gui.addFolder('Camera')
     cameraGui.add(camera.position, 'x')

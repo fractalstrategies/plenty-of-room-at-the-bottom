@@ -20,7 +20,7 @@ const buildGui = (atom1, atom2, light, camera) => {
     optionsGui.add(defaultValues, 'vibrate')
     optionsGui.addColor(defaultValues, 'backgroundColor')
     optionsGui.addColor(defaultValues, 'atomColor')
-    optionsGui.open()
+    // optionsGui.open()
 
     var atomsGui = gui.addFolder('Atoms')
     // atomsGui.open()
@@ -41,12 +41,12 @@ const buildGui = (atom1, atom2, light, camera) => {
     lightGui.add(light.position, 'x')
     lightGui.add(light.position, 'y')
     lightGui.add(light.position, 'z')
+    lightGui.open()
 
     var cameraGui = gui.addFolder('Camera')
     cameraGui.add(camera.position, 'x')
     cameraGui.add(camera.position, 'y')
     cameraGui.add(camera.position, 'z')
-    cameraGui.add({fov: 0}, 'fov')
 
     gui.remember({})
 

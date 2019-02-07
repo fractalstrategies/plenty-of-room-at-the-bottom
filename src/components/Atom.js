@@ -10,7 +10,9 @@ class Atom {
         this.material = new THREE.MeshBasicMaterial({ map: this.texture })
         this.mesh = new THREE.Mesh(this.geometry, this.material)
 
-        this.mesh.position.x = atomDeets.offsetX
+        this.mesh.position.x = atomDeets.offset.x
+        this.mesh.position.y = atomDeets.offset.y
+        this.mesh.position.z = atomDeets.offset.z
 
         this.name = atomDeets.other[0]
         this.protons = atomDeets.other[1]
@@ -35,7 +37,7 @@ class Atom {
     }
 
     vibrate() {
-        let step = 0.1
+        let step = 0.08
         this.mesh.position.x += [step, -step, -step, step][this.tick]
         this.mesh.position.x += [step, -step, -step, step][this.tick]
     }

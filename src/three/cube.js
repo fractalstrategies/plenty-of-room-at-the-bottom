@@ -1,10 +1,25 @@
 import * as THREE from 'three'
 
-var geometry = new THREE.BoxGeometry(7, 7, 7)
-var material = new THREE.MeshNormalMaterial()
-// var material = new THREE.MeshBasicMaterial( { color: 0x00ff00 } )
-var mesh = new THREE.Mesh(geometry, material)
+class Cube {
+    
+    constructor(cubeDeets) {
 
-mesh.position.x = -10
+        this.geometry = new THREE.BoxGeometry(7, 7, 7)
+        this.material = new THREE.MeshLambertMaterial( { color: 0xfd59d7 } )
+        // this.material = new THREE.MeshBasicMaterial( { color: 0x00ff00 } )
+        // this.material = new THREE.MeshNormalMaterial()
+        this.mesh = new THREE.Mesh(this.geometry, this.material)
 
-export default mesh
+        this.mesh.position.x += cubeDeets.offset.x
+        this.mesh.position.y += cubeDeets.offset.y
+        this.mesh.position.z += cubeDeets.offset.z
+
+    }
+
+    addToScene(scene) {
+        scene.add(this.mesh)
+    }
+
+}
+
+export default Cube

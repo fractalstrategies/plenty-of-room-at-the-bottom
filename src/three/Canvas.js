@@ -22,7 +22,10 @@ class Canvas extends React.Component {
         var scene = new THREE.Scene()
         scene.background = new THREE.Color('rgb(255, 255, 255)')
 
-        var scale = new Scale({})
+        var scale = new Scale({
+            scaleStart: { x: -40, y: 0, z: 0 },
+            cubeSize: 10,
+        })
         scale.addToScene(scene)
 
         var atom1 = new Atom({ offset: { x: -10, y: 0, z: 0 }, other: ['hydrogen', 1, 1, 0, 'up', '1p']})
@@ -36,10 +39,12 @@ class Canvas extends React.Component {
         var light1 = new Light({})
         light1.addToScene(scene)
 
-        gui(this.setSceneBackgroundColor, atom1.mesh, atom2.mesh, light1.light, camera)
+        gui(this.setSceneBackgroundColor, this.setVibrate, atom1.mesh, atom2.mesh, light1.light, camera)
 
         this.setState(prevState => {
             prevState.scene = scene
+            prevState.atom1 = atom1
+            prevState.atom2 = atom2
         })
 
         function animate() {
@@ -56,12 +61,19 @@ class Canvas extends React.Component {
         this.setState(prevState => prevState.scene.background = new THREE.Color(color))
     }
 
+    setVibrate = (vibrate) => {
+        this.setState(prevState => {
+            prevState.atom1.shouldVibrate = vibrate
+            prevState.atom2.shouldVibrate = vibrate
+            return prevState
+        })
+    }
+
     render() {
 
         return (
             <div ref='canvas'>
-            <div id='gui-mount' style={{ position: 'absolute', top: '50px', right: '0' }}></div>
-                Press 'H' to show/hide GUI
+                <div id='gui-mount' style={{ position: 'absolute', top: '50px', right: '0' }}></div>
             </div>
         )
 

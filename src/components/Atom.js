@@ -20,6 +20,7 @@ class Atom {
         this.electrons = atomDeets.other[3]
         this.spin = atomDeets.other[4]
         this.orbitalFields = atomDeets.other[5]
+        this.shouldVibrate = true
 
         this.tick = 0
 
@@ -44,7 +45,7 @@ class Atom {
 
     animate() {
         this.spinAtom()
-        this.vibrate()
+        if (this.shouldVibrate) this.vibrate()
         if (this.tick >= 3) this.tick = 0
         else this.tick++
     }

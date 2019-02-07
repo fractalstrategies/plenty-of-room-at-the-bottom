@@ -1,6 +1,6 @@
 import * as dat from 'dat.gui'
 
-const buildGui = (setSceneBackgroundColor, atom1, atom2, light, camera) => {
+const buildGui = (setSceneBackgroundColor, setVibrate, atom1, atom2, light, camera) => {
 
     const defaultValues = {
         scale: 'nano',
@@ -17,10 +17,13 @@ const buildGui = (setSceneBackgroundColor, atom1, atom2, light, camera) => {
 
     var optionsGui = gui.addFolder('Options')
     optionsGui.add(defaultValues, 'scale', ['normal', 'small', 'mini', 'macro', 'micro', 'nano'])
-    optionsGui.add(defaultValues, 'vibrate')
+    var vibrate = optionsGui.add(defaultValues, 'vibrate')
     var backgroundColor = optionsGui.addColor(defaultValues, 'backgroundColor')
     optionsGui.addColor(defaultValues, 'atomColor')
     optionsGui.open()
+    vibrate.onChange(value => {
+        setVibrate(value)
+    })
     backgroundColor.onChange(value => {
         setSceneBackgroundColor(value)
     })

@@ -1,5 +1,8 @@
 import React from 'react'
-import { List, ListItem, ListItemIcon, ListItemText, Collapse, Checkbox } from '@material-ui/core'
+import PropTypes from 'prop-types'
+import { connect } from 'react-redux'
+import { fetchPosts } from '../actions/postActions'
+import { List, ListItem, ListItemIcon, ListItemText, Collapse, Checkbox, Button } from '@material-ui/core'
 import ListIcon from '@material-ui/icons/List'
 
 class ToDoList extends React.Component {
@@ -22,6 +25,7 @@ class ToDoList extends React.Component {
                 { task: 'protons, neutrons, electrons, spin, orbital fields', completed: false },
                 { task: 'color, radius, label', completed: false },
                 { task: 'quantum properties', completed: false },
+                { task: 'force needed to free one atom from its bond to other atoms by inter-molecular forces', completed: false },
             ],
             'molecule': [
                 { task: 'atoms, bonds', completed: false },
@@ -151,6 +155,10 @@ class ToDoList extends React.Component {
         openCategories: [],
     }
 
+    componentWillMount() {
+        this.props.fetchPosts()
+    }
+
     componentDidMount() {
         this.setState(prevState => {
             return {
@@ -195,6 +203,7 @@ class ToDoList extends React.Component {
 
         return (
             <List subheader='Components' style={{ width: '600px', marginLeft: '30%' }}>
+                <Button variant='contained' color='primary'>Push Me</Button>
                 {listCategories}
             </List>
         )
@@ -203,4 +212,13 @@ class ToDoList extends React.Component {
 
 }
 
-export default ToDoList
+ToDoList.PropTypes = {
+    fetchPosts: PropTypes.func.isRequired,
+    posts: PropTypes.array.isRequired,
+}
+
+const mapStateToProps = state => ({
+    posts: state.posts.items,
+})
+
+export default connect(mapStateToProps, { fetchPosts })(ToDoList)

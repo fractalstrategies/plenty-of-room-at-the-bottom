@@ -1,4 +1,6 @@
 import React from 'react'
+import store from './store'
+import { Provider } from 'react-redux'
 
 import Header from './components/Header'
 import Canvas from './three/Canvas'
@@ -9,18 +11,20 @@ import './css/App.css'
 
 class App extends React.Component {
 
-  render() {
+    render() {
 
-    return (
-      <div style={{ textAlign: 'center' }}>
-        <Header />
-        <Canvas />
-        <Motivations />
-        <ToDoList />
-      </div>
-    )
+        return (
+            <Provider store={store}>
+                <div style={{ textAlign: 'center' }}>
+                    <Header />
+                    <Canvas />
+                    <Motivations />
+                    <ToDoList />
+                </div>
+            </Provider>
+        )
 
-  }
+    }
 
 }
 

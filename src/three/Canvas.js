@@ -2,7 +2,6 @@ import React from 'react'
 import * as THREE from 'three'
 
 import Scale from './Scale'
-import Line from './Line'
 import Atom from '../components/Atom'
 import Light from './Light'
 
@@ -23,18 +22,11 @@ class Canvas extends React.Component {
         var scene = new THREE.Scene()
         scene.background = new THREE.Color('rgb(255, 255, 255)')
 
-        var line = new Line({
+        new Scale({
             scene: scene,
-            pointA: { x: 0, y: 0, z: 0 },
-            pointB: { x: 10, y: 10, z: 10 },
-            color: 'rgb(100, 200, 200)',
-        })
-
-        var scale = new Scale({
             scaleStart: { x: -40, y: 0, z: 0 },
             cubeSize: 10,
         })
-        scale.addToScene(scene)
 
         var atom1 = new Atom({ offset: { x: -10, y: 0, z: 0 }, other: ['hydrogen', 1, 1, 0, 'up', '1p']})
         var atom2 = new Atom({ offset: { x: 10, y: 0, z: 0 }, other: ['hydrogen', 1, 1, 0, 'up', '1p']})

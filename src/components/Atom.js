@@ -4,30 +4,30 @@ class Atom {
 
     constructor(atomDeets) {
 
+        const { scene, offset, other } = atomDeets
+
         this.loader = new THREE.TextureLoader()
         this.texture = this.loader.load('https://i.imgur.com/VqIRECw.png', t => t)
         this.geometry = new THREE.SphereGeometry(4, 32, 32)
         this.material = new THREE.MeshBasicMaterial({ map: this.texture })
         this.mesh = new THREE.Mesh(this.geometry, this.material)
 
-        this.mesh.position.x = atomDeets.offset.x
-        this.mesh.position.y = atomDeets.offset.y
-        this.mesh.position.z = atomDeets.offset.z
+        this.mesh.position.x = offset.x
+        this.mesh.position.y = offset.y
+        this.mesh.position.z = offset.z
 
-        this.name = atomDeets.other[0]
-        this.protons = atomDeets.other[1]
-        this.neutrons = atomDeets.other[2]
-        this.electrons = atomDeets.other[3]
-        this.spin = atomDeets.other[4]
-        this.orbitalFields = atomDeets.other[5]
+        scene.add(this.mesh)
+
+        this.name = other[0]
+        this.protons = other[1]
+        this.neutrons = other[2]
+        this.electrons = other[3]
+        this.spin = other[4]
+        this.orbitalFields = other[5]
         this.shouldVibrate = true
 
         this.tick = 0
 
-    }
-
-    addToScene(scene) {
-        scene.add(this.mesh)
     }
 
     spinAtom() {

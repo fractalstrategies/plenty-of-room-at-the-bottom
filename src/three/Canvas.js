@@ -24,14 +24,20 @@ class Canvas extends React.Component {
 
         new Scale({
             scene: scene,
-            scaleStart: { x: -40, y: 0, z: 0 },
+            position: { x: 0, y: 0, z: 0 },
             cubeSize: 10,
         })
 
-        var atom1 = new Atom({ offset: { x: -10, y: 0, z: 0 }, other: ['hydrogen', 1, 1, 0, 'up', '1p']})
-        var atom2 = new Atom({ offset: { x: 10, y: 0, z: 0 }, other: ['hydrogen', 1, 1, 0, 'up', '1p']})
-        atom1.addToScene(scene)
-        atom2.addToScene(scene)
+        var atom1 = new Atom({
+            scene: scene,
+            offset: { x: -10, y: 0, z: 0 },
+            other: ['hydrogen', 1, 1, 0, 'up', '1p']
+        })
+        var atom2 = new Atom({
+            scene: scene,
+            offset: { x: 10, y: 0, z: 0 },
+            other: ['hydrogen', 1, 1, 0, 'up', '1p']
+        })
 
         scene.add(planeGrid)
         scene.add(lines)

@@ -24,8 +24,8 @@ class Canvas extends React.Component {
 
         new Scale({
             scene: scene,
-            position: { x: 0, y: 0, z: 0 },
-            cubeSize: 10,
+            position: { x: -40, y: -10, z: 0 },
+            cubeSize: 3,
         })
 
         var atom1 = new Atom({

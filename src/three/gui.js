@@ -20,7 +20,8 @@ const buildGui = (setSceneBackgroundColor, setVibrate, atom1, atom2, light, came
     var vibrate = optionsGui.add(defaultValues, 'vibrate')
     var backgroundColor = optionsGui.addColor(defaultValues, 'backgroundColor')
     optionsGui.addColor(defaultValues, 'atomColor')
-    optionsGui.open()
+    // optionsGui.open()
+
     vibrate.onChange(value => {
         setVibrate(value)
     })
@@ -53,6 +54,7 @@ const buildGui = (setSceneBackgroundColor, setVibrate, atom1, atom2, light, came
     cameraGui.add(camera.position, 'x')
     cameraGui.add(camera.position, 'y')
     cameraGui.add(camera.position, 'z')
+    cameraGui.open()
 
     gui.remember({})
 

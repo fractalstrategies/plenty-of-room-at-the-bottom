@@ -212,9 +212,9 @@ class ToDoList extends React.Component {
 
 }
 
-ToDoList.PropTypes = {
+ToDoList.propTypes = {
     fetchPosts: PropTypes.func.isRequired,
-    posts: PropTypes.array.isRequired,
+    posts: PropTypes.object.isRequired,
 }
 
 const mapStateToProps = state => ({

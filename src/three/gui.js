@@ -1,6 +1,7 @@
 import * as dat from 'dat.gui'
+import * as THREE from 'three'
 
-const buildGui = (scene, setSceneBackgroundColor, setVibrate, light, camera) => {
+const buildGui = (scene, setVibrate, light, camera) => {
 
     const defaultValues = {
         scalePoint: 'normal',
@@ -30,7 +31,7 @@ const buildGui = (scene, setSceneBackgroundColor, setVibrate, light, camera) => 
             setVibrate(value)
         })
         backgroundColorControl.onChange(value => {
-            setSceneBackgroundColor(value)
+            scene.background = new THREE.Color(value)
         })
 
     // var atomsGui = gui.addFolder('Atoms')

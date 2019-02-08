@@ -1,10 +1,11 @@
 import React from 'react'
 import * as THREE from 'three'
 
+import Sky from './Sky'
 import Scale from './Scale'
+import Text from './Text'
 import Light from './Light'
 
-import camera from './camera'
 import gui from './gui'
 
 
@@ -14,15 +15,28 @@ class Canvas extends React.Component {
 
     componentDidMount() {
 
+        // renderer
         var renderer = new THREE.WebGLRenderer({
             antialias: true,
             alpha: true,
         })
         renderer.setSize(window.innerWidth, window.innerHeight)
         this.refs.canvas.appendChild(renderer.domElement)
-        var scene = new THREE.Scene()
-        scene.background = new THREE.Color('rgb(255, 255, 255)')
 
+        // camera
+        var camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.1, 500)
+        camera.position.set(5, 5, 50)
+        camera.lookAt(new THREE.Vector3(0, 0, 0))
+
+        // scene
+        var scene = new THREE.Scene()
+
+        new Sky({ scene: scene })
+
+        // new Text({ scene: scene, text: 'jello world' })
+
+        // var loader = new THREE.OBJLoader()
+        // loader.load('../objects/R2D2_Standing.obj', err => console.log, )
         // var loader = new THREE.JSONLoader()
         // loader.load()
 
@@ -35,7 +49,7 @@ class Canvas extends React.Component {
         var light1 = new Light({})
         light1.addToScene(scene)
 
-        gui(scene, this.setSceneBackgroundColor, this.setVibrate, light1.light, camera)
+        gui(scene, this.setVibrate, light1.light, camera)
 
         this.setState(prevState => {
             prevState.scene = scene
@@ -47,10 +61,6 @@ class Canvas extends React.Component {
         }
         animate()
 
-    }
-
-    setSceneBackgroundColor = (color) => {
-        this.setState(prevState => prevState.scene.background = new THREE.Color(color))
     }
 
     setVibrate = (vibrate) => {

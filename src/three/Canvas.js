@@ -22,6 +22,9 @@ class Canvas extends React.Component {
         var scene = new THREE.Scene()
         scene.background = new THREE.Color('rgb(255, 255, 255)')
 
+        // var loader = new THREE.JSONLoader()
+        // loader.load()
+
         new Scale({
             scene: scene,
             position: { x: -40, y: -10, z: 0 },

@@ -3,7 +3,7 @@ import * as THREE from 'three'
 
 import Sky from './Sky'
 import Scale from './Scale'
-import Text from './Text'
+// import Text from './Text'
 import Light from './Light'
 
 import gui from './gui'
@@ -24,7 +24,7 @@ class Canvas extends React.Component {
         this.refs.canvas.appendChild(renderer.domElement)
 
         // camera
-        var camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.1, 500)
+        var camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.1, 5000)
         camera.position.set(5, 5, 50)
         camera.lookAt(new THREE.Vector3(0, 0, 0))
 
@@ -74,7 +74,7 @@ class Canvas extends React.Component {
     render() {
 
         return (
-            <div ref='canvas'>
+            <div ref='canvas' style={{ height: window.innerHeight }}>
                 <div id='gui-mount' style={{ position: 'absolute', top: '50px', right: '0' }}></div>
             </div>
         )

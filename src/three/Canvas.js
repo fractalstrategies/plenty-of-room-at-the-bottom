@@ -3,7 +3,7 @@ import * as THREE from 'three'
 
 import Sky from './Sky'
 import Scale from './Scale'
-// import Text from './Text'
+import Text from './Text'
 import Light from './Light'
 
 import gui from './gui'
@@ -33,7 +33,7 @@ class Canvas extends React.Component {
 
         new Sky({ scene: scene })
 
-        // new Text({ scene: scene, text: 'jello world' })
+        new Text({ scene: scene, text: 'jello world' })
 
         // var loader = new THREE.OBJLoader()
         // loader.load('../objects/R2D2_Standing.obj', err => console.log, )

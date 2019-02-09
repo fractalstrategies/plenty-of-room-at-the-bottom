@@ -8,8 +8,9 @@ class Text {
 
         this.loader = new THREE.FontLoader()
         
-        this.loader.load('../css/Font_Ghost_Factory_Regular.json', response => {
+        this.loader.load('/examples/fonts/droid/droid_sans_regular.typeface.json', response => {
             this.font = response
+            console.log(response)
         })
 
         this.geometry = new THREE.TextGeometry(text, {

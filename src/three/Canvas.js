@@ -3,7 +3,8 @@ import * as THREE from 'three'
 
 import Sky from './Sky'
 import Scale from './Scale'
-import Text from './Text'
+import Atom from '../components/Atom'
+// import Text from './Text'
 import Light from './Light'
 
 import gui from './gui'
@@ -33,12 +34,23 @@ class Canvas extends React.Component {
 
         new Sky({ scene: scene })
 
-        new Text({ scene: scene, text: 'jello world' })
+        // new Text({ scene: scene, text: 'jello world' })
 
         // var loader = new THREE.OBJLoader()
         // loader.load('../objects/R2D2_Standing.obj', err => console.log, )
         // var loader = new THREE.JSONLoader()
         // loader.load()
+
+        var atom1 = new Atom({
+            scene: scene,
+            offset: { x: -10, y: 0, z: 0 },
+            other: ['hydrogen', 1, 1, 0, 'up', '1p']
+        })
+        var atom2 = new Atom({
+            scene: scene,
+            offset: { x: 10, y: 0, z: 0 },
+            other: ['hydrogen', 1, 1, 0, 'up', '1p']
+        })
 
         new Scale({
             scene: scene,
@@ -57,6 +69,8 @@ class Canvas extends React.Component {
 
         function animate() {
             requestAnimationFrame(animate)
+            atom1.animate()
+            atom2.animate()
             renderer.render(scene, camera)
         }
         animate()

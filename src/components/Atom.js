@@ -1,30 +1,23 @@
 import * as THREE from 'three'
+import Sphere from '../three/Sphere'
 
 class Atom {
 
-    constructor(atomDeets) {
+    constructor(atomDetails) {
 
-        const { scene, offset, other } = atomDeets
+        const { scene, name, offset, protons, neutrons, electrons, spin, orbitalFields } = atomDetails
 
-        this.loader = new THREE.TextureLoader()
-        this.texture = this.loader.load('https://i.imgur.com/VqIRECw.png', t => t)
-        this.geometry = new THREE.SphereGeometry(4, 32, 32)
-        this.material = new THREE.MeshBasicMaterial({ map: this.texture })
-        this.mesh = new THREE.Mesh(this.geometry, this.material)
+        var size = 4
 
-        this.mesh.position.x = offset.x
-        this.mesh.position.y = offset.y
-        this.mesh.position.z = offset.z
-
-        scene.add(this.mesh)
-
-        this.name = other[0]
-        this.protons = other[1]
-        this.neutrons = other[2]
-        this.electrons = other[3]
-        this.spin = other[4]
-        this.orbitalFields = other[5]
+        this.name = name
+        this.protons = protons
+        this.neutrons = neutrons
+        this.electrons = electrons
+        this.spin = spin
+        this.orbitalFields = orbitalFields
         this.shouldVibrate = true
+
+        this.proton1 = new Sphere({scene, offset, size})
 
         this.tick = 0
 
@@ -32,15 +25,15 @@ class Atom {
 
     spinAtom() {
         if (this.spin === 'up') {
-            this.mesh.rotation.x += 0.16
-            this.mesh.rotation.y += 0.32
+            this.proton1.mesh.rotation.x += 0.16
+            this.proton1.mesh.rotation.y += 0.32
         }
     }
 
     vibrate() {
         let step = 0.08
-        this.mesh.position.x += [step, -step, -step, step][this.tick]
-        this.mesh.position.x += [step, -step, -step, step][this.tick]
+        this.proton1.mesh.position.x += [step, -step, -step, step][this.tick]
+        this.proton1.mesh.position.y += [step, -step, -step, step][this.tick]
     }
 
     animate() {

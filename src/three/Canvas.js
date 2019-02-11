@@ -12,7 +12,9 @@ import gui from './gui'
 
 class Canvas extends React.Component {
 
-    state = {}
+    state = {
+        scale: 1, // in nanometers
+    }
 
     componentDidMount() {
 
@@ -43,13 +45,23 @@ class Canvas extends React.Component {
 
         var atom1 = new Atom({
             scene: scene,
+            name: 'hydrogen',
             offset: { x: -10, y: 0, z: 0 },
-            other: ['hydrogen', 1, 1, 0, 'up', '1p']
+            protons: 1,
+            neutrons: 0,
+            electrons: 1,
+            spin: 'up',
+            orbitalFields: '1p',
         })
         var atom2 = new Atom({
             scene: scene,
+            name: 'hydrogen',
             offset: { x: 10, y: 0, z: 0 },
-            other: ['hydrogen', 1, 1, 0, 'up', '1p']
+            protons: 1,
+            neutrons: 0,
+            electrons: 1,
+            spin: 'up',
+            orbitalFields: '1p',
         })
 
         new Scale({

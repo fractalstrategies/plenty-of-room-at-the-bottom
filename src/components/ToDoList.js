@@ -39,6 +39,7 @@ class ToDoList extends React.Component {
                 { task: 'color, radius, label', completed: false },
                 { task: 'quantum properties', completed: false },
                 { task: 'force needed to free one atom from its bond to other atoms by inter-molecular forces', completed: false },
+                { task: 'heat', completed: false },
             ],
             'molecule': [
                 { task: 'atoms, bonds', completed: false },

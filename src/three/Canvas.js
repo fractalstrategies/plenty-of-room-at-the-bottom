@@ -2,6 +2,7 @@ import React from 'react'
 import * as THREE from 'three'
 
 import Scale from './Scale'
+import AtomicFloor from './AtomicFloor'
 import Atom from '../components/Atom'
 import Light from './Light'
 // import Sky from './Sky'
@@ -21,7 +22,7 @@ class Canvas extends React.Component {
         // renderer
         var renderer = new THREE.WebGLRenderer({
             antialias: true,
-            alpha: true,
+            alpha: false,
         })
         renderer.setSize(window.innerWidth, window.innerHeight)
         this.refs.canvas.appendChild(renderer.domElement)
@@ -43,42 +44,44 @@ class Canvas extends React.Component {
         // var loader = new THREE.JSONLoader()
         // loader.load()
 
+        new AtomicFloor({ scene, position: { x: -10, y: -10, z: 10 }, size: 20 })
+
         var atom1 = new Atom({
-            scene: scene,
+            scene,
             name: 'hydrogen',
             size: 1,
-            offset: { x: -10, y: 0, z: 0 },
+            position: { x: -10, y: 0, z: 0 },
             protons: 1,
             neutrons: 0,
             electrons: 1,
             spin: 'up',
             orbitalFields: '1p',
         })
-        var atom2 = new Atom({
-            scene: scene,
-            name: 'hydrogen',
-            size: 1,
-            offset: { x: 10, y: 0, z: 0 },
-            protons: 1,
-            neutrons: 0,
-            electrons: 1,
-            spin: 'up',
-            orbitalFields: '1p',
-        })
+        // var atom2 = new Atom({
+        //     scene: scene,
+        //     name: 'hydrogen',
+        //     size: 1,
+        //     position: { x: 10, y: 0, z: 0 },
+        //     protons: 1,
+        //     neutrons: 0,
+        //     electrons: 1,
+        //     spin: 'up',
+        //     orbitalFields: '1p',
+        // })
 
         new Scale({
-            scene: scene,
+            scene,
             position: { x: -40, y: -10, z: 0 },
             cubeSize: 3,
         })
 
         var light1 = new Light({
-            scene: scene,
+            scene,
             position: { x: 10, y: 0, z: 25 },
             color: 'rgb(255, 255, 255)',
         })
 
-        gui(scene, light1.light, camera, { atoms: [atom1, atom2] })
+        gui(scene, light1.light, camera, { atoms: [atom1] })
 
         this.setState(prevState => {
             prevState.scene = scene
@@ -87,7 +90,7 @@ class Canvas extends React.Component {
         function animate() {
             requestAnimationFrame(animate)
             atom1.animate()
-            atom2.animate()
+            // atom2.animate()
             renderer.render(scene, camera)
         }
         animate()
@@ -97,7 +100,7 @@ class Canvas extends React.Component {
     setVibrate = (vibrate) => {
         this.setState(prevState => {
             prevState.atom1.shouldVibrate = vibrate
-            prevState.atom2.shouldVibrate = vibrate
+            // prevState.atom2.shouldVibrate = vibrate
             return prevState
         })
     }

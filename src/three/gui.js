@@ -8,7 +8,7 @@ const buildGui = (scene, light, camera, models) => {
     const defaultValues = {
         scalePoint: 'normal',
         scale: 1,
-        vibrate: true,
+        vibrate: false,
         backgroundColor: 'rgb(255, 255, 255)',
         atomColor: 'rgb(100, 100, 200)',
     }
@@ -25,7 +25,6 @@ const buildGui = (scene, light, camera, models) => {
         var vibrateControl = optionsGui.add(defaultValues, 'vibrate')
         var backgroundColorControl = optionsGui.addColor(defaultValues, 'backgroundColor')
         optionsGui.addColor(defaultValues, 'atomColor')
-        optionsGui.open()
         scaleControl.onChange(value => {
             scene.scale.set(value, value, value)
         })
@@ -36,6 +35,7 @@ const buildGui = (scene, light, camera, models) => {
         backgroundColorControl.onChange(value => {
             scene.background = new THREE.Color(value)
         })
+        // optionsGui.open()
 
     // var atomsGui = gui.addFolder('Atoms')
     //     // atomsGui.open()
@@ -57,7 +57,7 @@ const buildGui = (scene, light, camera, models) => {
     // lightGui.open()
 
     var cameraGui = gui.addFolder('Camera')
-        // cameraGui.open()
+        cameraGui.open()
         var cameraPositionGui = cameraGui.addFolder('Position')
             cameraPositionGui.add(camera.position, 'x')
             cameraPositionGui.add(camera.position, 'y')

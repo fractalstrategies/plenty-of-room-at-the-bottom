@@ -1,13 +1,10 @@
-import * as THREE from 'three'
 import Sphere from '../three/Sphere'
 
 class Atom {
 
     constructor(atomDetails) {
 
-        const { scene, name, offset, protons, neutrons, electrons, spin, orbitalFields } = atomDetails
-
-        var size = 4
+        const { scene, name, size, offset, protons, neutrons, electrons, spin, orbitalFields } = atomDetails
 
         this.name = name
         this.protons = protons

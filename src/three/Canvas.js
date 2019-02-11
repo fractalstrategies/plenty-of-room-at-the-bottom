@@ -1,11 +1,11 @@
 import React from 'react'
 import * as THREE from 'three'
 
-import Sky from './Sky'
 import Scale from './Scale'
 import Atom from '../components/Atom'
-// import Text from './Text'
 import Light from './Light'
+// import Sky from './Sky'
+// import Text from './Text'
 
 import gui from './gui'
 
@@ -34,7 +34,7 @@ class Canvas extends React.Component {
         // scene
         var scene = new THREE.Scene()
 
-        new Sky({ scene: scene })
+        // new Sky({ scene: scene })
 
         // new Text({ scene: scene, text: 'jello world' })
 
@@ -46,6 +46,7 @@ class Canvas extends React.Component {
         var atom1 = new Atom({
             scene: scene,
             name: 'hydrogen',
+            size: 1,
             offset: { x: -10, y: 0, z: 0 },
             protons: 1,
             neutrons: 0,
@@ -56,6 +57,7 @@ class Canvas extends React.Component {
         var atom2 = new Atom({
             scene: scene,
             name: 'hydrogen',
+            size: 1,
             offset: { x: 10, y: 0, z: 0 },
             protons: 1,
             neutrons: 0,
@@ -70,10 +72,13 @@ class Canvas extends React.Component {
             cubeSize: 3,
         })
 
-        var light1 = new Light({})
-        light1.addToScene(scene)
+        var light1 = new Light({
+            scene: scene,
+            position: { x: 10, y: 0, z: 25 },
+            color: 'rgb(255, 255, 255)',
+        })
 
-        gui(scene, this.setVibrate, light1.light, camera)
+        gui(scene, light1.light, camera, { atoms: [atom1, atom2] })
 
         this.setState(prevState => {
             prevState.scene = scene

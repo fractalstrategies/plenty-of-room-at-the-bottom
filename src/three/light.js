@@ -2,13 +2,15 @@ import * as THREE from 'three'
 
 class Light {
 
-    constructor(lightDeets) {
-        this.light = new THREE.PointLight(0xFFFF00)
-        this.light.position.set(10, 0, 25)
-    }
+    constructor(lightDetails) {
 
-    addToScene(scene) {
+        const { scene, position, color } = lightDetails
+
+        this.light = new THREE.PointLight(color)
+        this.light.position.set(position.x, position.y, position.z)
+
         scene.add(this.light)
+
     }
 
 }

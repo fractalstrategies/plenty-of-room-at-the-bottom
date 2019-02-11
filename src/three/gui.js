@@ -1,7 +1,9 @@
 import * as dat from 'dat.gui'
 import * as THREE from 'three'
 
-const buildGui = (scene, setVibrate, light, camera) => {
+const buildGui = (scene, light, camera, models) => {
+
+    const { atoms } = models
 
     const defaultValues = {
         scalePoint: 'normal',
@@ -28,7 +30,8 @@ const buildGui = (scene, setVibrate, light, camera) => {
             scene.scale.set(value, value, value)
         })
         vibrateControl.onChange(value => {
-            setVibrate(value)
+            atoms[0].shouldVibrate = value
+            atoms[1].shouldVibrate = value
         })
         backgroundColorControl.onChange(value => {
             scene.background = new THREE.Color(value)

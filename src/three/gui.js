@@ -37,18 +37,16 @@ const buildGui = (scene, light, camera, models) => {
         })
         // optionsGui.open()
 
-    // var atomsGui = gui.addFolder('Atoms')
-    //     // atomsGui.open()
-    //     var atom1Gui = atomsGui.addFolder('Atom 1 Pos')
-    //         atom1Gui.add(atom1.position, 'x', -50, 50)
-    //         atom1Gui.add(atom1.position, 'y', -20, 20)
-    //         atom1Gui.add(atom1.position, 'z', -400, 40)
-    //         atom1Gui.open()
-    //     var atom2Gui = atomsGui.addFolder('Atom 2 Pos')
-    //         atom2Gui.add(atom2.position, 'x', -50, 50)
-    //         atom2Gui.add(atom2.position, 'y', -20, 20)
-    //         atom2Gui.add(atom2.position, 'z', -400, 40)
-    //         atom2Gui.open()
+    var atomsGui = gui.addFolder('Atoms')
+    var atomGuis = []
+        // atomsGui.open()
+        atoms.map((atom, i) => {
+            atomGuis[i] = atomsGui.addFolder('Atom ' + i.toString() + ' Position')
+            atomGuis[i].add(atom.protons[0].mesh.position, 'x', -50, 50)
+            atomGuis[i].add(atom.protons[0].mesh.position, 'y', -20, 20)
+            atomGuis[i].add(atom.protons[0].mesh.position, 'z', -400, 40)
+            atomGuis[i].open()
+        })
 
     var lightGui = gui.addFolder('Light')
     lightGui.add(light.position, 'x')
@@ -57,7 +55,7 @@ const buildGui = (scene, light, camera, models) => {
     // lightGui.open()
 
     var cameraGui = gui.addFolder('Camera')
-        cameraGui.open()
+        // cameraGui.open()
         var cameraPositionGui = cameraGui.addFolder('Position')
             cameraPositionGui.add(camera.position, 'x')
             cameraPositionGui.add(camera.position, 'y')

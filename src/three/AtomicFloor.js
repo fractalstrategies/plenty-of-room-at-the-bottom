@@ -11,9 +11,9 @@ class AtomicFloor {
                 new Sphere({
                     scene,
                     position: {
-                        x: position.x + (i * 2),
+                        x: position.x + (i * 3),
                         y: position.y,
-                        z: position.z - (j * 2),
+                        z: position.z - (j * 3),
                     },
                     size: 1,
                 })

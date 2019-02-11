@@ -29,11 +29,13 @@ class Canvas extends React.Component {
 
         // camera
         var camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.1, 5000)
-        camera.position.set(5, 5, 50)
+        camera.position.set(0, 0, 50)
         camera.lookAt(new THREE.Vector3(0, 0, 0))
 
         // scene
         var scene = new THREE.Scene()
+
+        new AtomicFloor({ scene, position: { x: -20, y: -5, z: 20 }, size: 20 })
 
         // new Sky({ scene: scene })
 
@@ -43,8 +45,6 @@ class Canvas extends React.Component {
         // loader.load('../objects/R2D2_Standing.obj', err => console.log, )
         // var loader = new THREE.JSONLoader()
         // loader.load()
-
-        new AtomicFloor({ scene, position: { x: -10, y: -10, z: 10 }, size: 20 })
 
         var atom1 = new Atom({
             scene,

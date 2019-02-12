@@ -18,12 +18,11 @@ class Atom {
         this.shouldVibrate = false
 
         for (let i = 0; i < this.electronCount; i++) {
-            var color = 'rgb(255, 255, 255)'
-            this.electrons.push(new Light({scene, position, color}))
+            this.electrons.push(new Light({ scene, position, color: '#fff' }))
         }
 
         for (let i = 0; i < this.protonCount; i++) {
-            this.protons.push(new Sphere({scene, position, size}))
+            this.protons.push(new Sphere({ scene, position, size, color: '#fff' }))
         }
 
         this.tick = 0

@@ -46,6 +46,7 @@ const buildGui = (scene, light, camera, models) => {
             atomGuis[i].add(atom.protons[0].mesh.position, 'y', -20, 20)
             atomGuis[i].add(atom.protons[0].mesh.position, 'z', -400, 40)
             atomGuis[i].open()
+            return null
         })
 
     var lightGui = gui.addFolder('Light')

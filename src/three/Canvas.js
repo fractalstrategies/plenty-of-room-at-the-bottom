@@ -29,13 +29,13 @@ class Canvas extends React.Component {
 
         // camera
         var camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.1, 5000)
-        camera.position.set(0, 0, 50)
+        camera.position.set(0, 0, 30)
         camera.lookAt(new THREE.Vector3(0, 0, 0))
 
         // scene
         var scene = new THREE.Scene()
 
-        new AtomicFloor({ scene, position: { x: -20, y: -5, z: 20 }, size: 20 })
+        new AtomicFloor({ scene, position: { x: -12, y: -5, z: 12 }, size: 10 })
 
         // new Sky({ scene: scene })
 
@@ -50,7 +50,7 @@ class Canvas extends React.Component {
             scene,
             name: 'hydrogen',
             size: 1,
-            position: { x: -10, y: 0, z: 0 },
+            position: { x: 0, y: 0, z: 0 },
             protons: 1,
             neutrons: 0,
             electrons: 1,
@@ -71,7 +71,7 @@ class Canvas extends React.Component {
 
         new Scale({
             scene,
-            position: { x: -40, y: -10, z: 0 },
+            position: { x: -10, y: 0, z: 0 },
             cubeSize: 3,
         })
 

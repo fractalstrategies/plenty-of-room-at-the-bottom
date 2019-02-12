@@ -16,6 +16,7 @@ class AtomicFloor {
                         z: position.z - (j * 3),
                     },
                     size: 1,
+                    color: '#fff',
                 })
             }
         }

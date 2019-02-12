@@ -4,14 +4,15 @@ class Sphere {
 
     constructor(sphereDetails) {
 
-        const { scene, position, size} = sphereDetails
+        const { scene, position, size, color } = sphereDetails
 
         this.geometry = new THREE.SphereGeometry(size, 32, 32)
         
-        this.material = new THREE.MeshLambertMaterial()
-        // this.loader = new THREE.TextureLoader()
+        // this.material = new THREE.MeshLambertMaterial({ color })
+        this.loader = new THREE.TextureLoader()
         // this.texture = this.loader.load('https://i.imgur.com/VqIRECw.png', t => t)
-        // this.material = new THREE.MeshBasicMaterial({ map: this.texture })
+        this.texture = this.loader.load('https://i.imgur.com/JJvIrFw.png', t => t)
+        this.material = new THREE.MeshBasicMaterial({ map: this.texture })
 
         this.mesh = new THREE.Mesh(this.geometry, this.material)
 

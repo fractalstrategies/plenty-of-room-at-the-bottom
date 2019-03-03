@@ -1,5 +1,5 @@
-import Sphere from '../three/Sphere'
-import Light from '../three/Light'
+import Sphere from '../../three/Sphere'
+import Light from '../../three/Light'
 
 class Atom {
 

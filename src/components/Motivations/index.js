@@ -1,9 +1,6 @@
 import React from 'react'
-// import PropTypes from 'prop-types'
 
 class Motivations extends React.Component {
-
-    state = {}
 
     render() {
 
@@ -25,8 +22,5 @@ class Motivations extends React.Component {
     }
 
 }
-
-// Motivations.propTypes = {
-// }
 
 export default Motivations

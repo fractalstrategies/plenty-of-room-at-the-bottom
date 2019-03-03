@@ -1,13 +1,13 @@
 import React from 'react'
-import store from './store'
+import store from '../../store'
 import { Provider } from 'react-redux'
 
-import Header from './components/Header'
-import Canvas from './three/Canvas'
-import Motivations from './components/Motivations'
-import ToDoList from './components/ToDoList'
+import Header from '../Header'
+import Canvas from '../../three/Canvas'
+import Motivations from '../Motivations'
+import ToDoList from '../ToDoList'
 
-import './css/App.css'
+import './style.css'
 
 class App extends React.Component {
 

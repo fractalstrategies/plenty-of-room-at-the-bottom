@@ -4,7 +4,8 @@ class Sphere {
 
     constructor(sphereDetails) {
 
-        const { scene, position, size, color } = sphereDetails
+        const { scene, position, size, } = sphereDetails
+        // const { scene, position, size, color } = sphereDetails
 
         this.geometry = new THREE.SphereGeometry(size, 32, 32)
         

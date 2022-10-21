@@ -34,3 +34,11 @@ projections regarding molecular machines as accurate as those Leonardo da Vinci 
 
 ### alltogethernaaw
 - `git add . && git commit -m '' && git push && npm run build && aws s3 rm s3://theresplentyofroomatthebottom.com/ --recursive && aws s3 cp build/ s3://theresplentyofroomatthebottom.com/ --recursive`
+
+### Initiate
+`npx create-react-app plenty-of-room`
+`npm i three dat.gui`
+`npm i -D gh-pages`
+`npm i -D react-router-dom`
+`npm i @mui/material @mui/icons-material`
+`npm i @emotion/react @emotion/styled`

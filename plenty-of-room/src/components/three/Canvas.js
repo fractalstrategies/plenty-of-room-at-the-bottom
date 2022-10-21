@@ -35,7 +35,7 @@ export default function Canvas(props) {
     var scene = new THREE.Scene()
 
     // controls
-    // const controls = new OrbitControls(camera, renderer.domElement)
+    const controls = new OrbitControls(camera, renderer.domElement)
 
     new AtomicFloor({ scene, position: { x: -12, y: -5, z: 12 }, size: 10 })
 
@@ -94,7 +94,6 @@ export default function Canvas(props) {
       atom1.animate()
       // atom2.animate()
       renderer.render(scene, camera)
-      setTimeout(() => {}, 5000)
     }
     animate()
 

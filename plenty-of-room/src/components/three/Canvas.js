@@ -1,5 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react'
 import * as THREE from 'three'
+import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls'
 
 import Scale from './Scale'
 import AtomicFloor from './AtomicFloor'
@@ -32,6 +33,9 @@ export default function Canvas(props) {
 
     // scene
     var scene = new THREE.Scene()
+
+    // controls
+    // const controls = new OrbitControls(camera, renderer.domElement)
 
     new AtomicFloor({ scene, position: { x: -12, y: -5, z: 12 }, size: 10 })
 

@@ -16,7 +16,7 @@ export default function Header() {
           animation: 'App-logo-spin infinite 1s linear',
           height: '30px',
         }} alt="logo" />
-        <p>There's Plenty of Room at the Bottom</p>
+        <p>Plenty of Room at the Bottom</p>
       </div>
       <p>a simulation of nanotechnology</p>
       <div></div><div></div>

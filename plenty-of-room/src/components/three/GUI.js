@@ -1,6 +1,7 @@
 import * as dat from 'dat.gui'
 import * as THREE from 'three'
 
+// export default function GUI(scene, camera, models) {
 export default function GUI(scene, light, camera, models) {
 
   const { atoms } = models

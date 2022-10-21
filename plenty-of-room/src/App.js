@@ -7,15 +7,17 @@ const todo = (
   <div>
     <p>To Do</p>
     <ol style={{ color: 'white' }}>
-      <li>isolate Canvas components</li>
       <li>reduce camera rotation scale</li>
       <li>set intro scene</li>
       <li>animate to home screen</li>
+      <li>Add back in Sky</li>
+      <li>Add back in Text</li>
       <li>remove all old project files/folders</li>
       <li>remove warnings</li>
     </ol>
     <p>Done</p>
     <ul style={{ color: 'white' }}>
+      <li>isolate Canvas components</li>
       <li>deploy to GH pages</li>
       <li>remove boilerplate header</li>
       <li>set background color</li>

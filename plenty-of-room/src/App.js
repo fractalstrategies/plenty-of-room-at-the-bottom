@@ -3,8 +3,29 @@ import { BrowserRouter } from 'react-router-dom'
 import Header from './components/Header'
 import Canvas from './components/three/Canvas'
 
+const divSpacer = () => {
+  return <div style={{ height: window.innerHeight }}></div>
+}
+
+const scrollingText = (
+  <div style={{
+      display: 'flex',
+      position: 'absolute',
+      top: 0,
+      opacity: 0.7,
+      textAlign: 'center',
+      width: '100%',
+      height: window.innerHeight,
+      justifyContent: 'center',
+      flexDirection: 'column',
+    }}>
+      <h1>jello world</h1>
+      <h1>great success!</h1>
+  </div>
+)
+
 const todo = (
-  <div style={{ backgroundColor: '#556' }}>
+  <div style={{ backgroundColor: '#556', position: 'absolute', top: 0, opacity: 0.5, marginTop: 20 }}>
     <p>To Do</p>
     <ol >
       <li>Add back in Text</li>
@@ -36,6 +57,7 @@ export default function App() {
       <div style={{ backgroundColor: '#EEF' }}>
         <Header />
         <Canvas />
+        {scrollingText}
         {todo}
       </div>
     </BrowserRouter>

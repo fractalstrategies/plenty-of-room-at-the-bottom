@@ -23,7 +23,8 @@ export default function Canvas(props) {
     const camera = Camera()
     var scene = new THREE.Scene()
 
-    new OrbitControls(camera, renderer.domElement)
+    const orbitControls = new OrbitControls(camera, renderer.domElement)
+    orbitControls.enableZoom = false
     // const controls = new OrbitControls(camera, renderer.domElement)
     var light1 = new Light({
       scene,

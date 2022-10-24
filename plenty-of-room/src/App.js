@@ -4,19 +4,22 @@ import Header from './components/Header'
 import Canvas from './components/three/Canvas'
 
 const todo = (
-  <div>
+  <div style={{ backgroundColor: '#556' }}>
     <p>To Do</p>
-    <ol style={{ color: 'white' }}>
-      <li>reduce camera rotation scale</li>
+    <ol >
+      <li>Add back in Text</li>
       <li>set intro scene</li>
       <li>animate to home screen</li>
       <li>Add back in Sky</li>
-      <li>Add back in Text</li>
+      <li>update atom texture</li>
+      <li>reduce camera rotation scale</li>
       <li>remove all old project files/folders</li>
       <li>remove warnings</li>
     </ol>
     <p>Done</p>
-    <ul style={{ color: 'white' }}>
+    <ul>
+      <li>add grid</li>
+      <li>set canvas alpha to true</li>
       <li>isolate Canvas components</li>
       <li>deploy to GH pages</li>
       <li>remove boilerplate header</li>
@@ -30,7 +33,7 @@ export default function App() {
   return (
     <BrowserRouter>
     {/* <BrowserRouter basename='/plenty-of-room-at-the-bottom'> */}
-      <div style={{ backgroundColor: '#889' }}>
+      <div style={{ backgroundColor: '#EEF' }}>
         <Header />
         <Canvas />
         {todo}

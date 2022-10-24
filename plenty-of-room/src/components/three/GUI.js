@@ -2,9 +2,9 @@ import * as dat from 'dat.gui'
 import * as THREE from 'three'
 
 // export default function GUI(scene, camera, models) {
-export default function GUI(scene, light, camera, models) {
+export default function GUI(scene, light, camera, objs) {
 
-  const { atoms } = models
+  const { atoms, cube } = objs
 
   const defaultValues = {
     scalePoint: 'normal',
@@ -20,6 +20,14 @@ export default function GUI(scene, light, camera, models) {
     autoPlace: true,
   })
 
+  var cubeF = guiFS.addFolder('Cubes')
+  console.log(cube)
+  cubeF.add(cube.mesh.position, 'x')
+  cubeF.add(cube.mesh.position, 'y')
+  cubeF.add(cube.mesh.position, 'z')
+  cubeF.open()
+
+  // options
   var optionsGui = guiFS.addFolder('Options')
   optionsGui.add(defaultValues, 'scalePoint', ['normal', 'small', 'mini', 'macro', 'micro', 'nano'])
 

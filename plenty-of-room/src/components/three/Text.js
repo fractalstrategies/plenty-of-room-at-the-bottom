@@ -1,19 +1,21 @@
 import * as THREE from 'three'
+import { FontLoader } from 'three/addons/loaders/FontLoader.js'
+import { TextGeometry } from 'three/addons/geometries/TextGeometry.js'
 
 class Text {
 
-    constructor(textDeets) {
+    constructor(props) {
 
-        const { scene, text } = textDeets
+        const { scene, text } = props
 
-        this.loader = new THREE.FontLoader()
+        // this.loader = new FontLoader()
         
-        this.loader.load('/examples/fonts/droid/droid_sans_regular.typeface.json', response => {
-            this.font = response
-            console.log(response)
-        })
+        // this.loader.load('/examples/fonts/droid/droid_sans_regular.typeface.json', response => {
+        //     this.font = response
+        //     console.log(response)
+        // })
 
-        this.geometry = new THREE.TextGeometry(text, {
+        this.geometry = new TextGeometry(text, {
             font: this.font,
             size: 20,
             curveSegments: 4,
@@ -23,7 +25,7 @@ class Text {
         })
         this.geometry.computeBoundingBox()
         this.geometry.computeVertexNormals()
-        this.geometry = new THREE.BufferGeometry().fromGeometry(this.geometry)
+        // this.geometry = new THREE.BufferGeometry().fromGeometry(this.geometry)
 
         this.materials = [
             new THREE.MeshPhongMaterial({ color: 0xffffff, flatShading: true }), // front

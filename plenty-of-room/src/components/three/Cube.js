@@ -2,9 +2,7 @@ import * as THREE from 'three'
 
 class Cube {
 
-    constructor(cubeDeets) {
-
-        const { scene, size, offset, wireframe } = cubeDeets
+    constructor({ scene, size, color=0xfd59d7, offset, wireframe }) {
 
         this.geometry = new THREE.BoxGeometry(size, size, size)
 
@@ -15,7 +13,7 @@ class Cube {
             this.mesh.material.opacity = 1
             this.mesh.material.transparent = false
         } else {
-            this.material = new THREE.MeshLambertMaterial({ color: 0xfd59d7 })
+            this.material = new THREE.MeshLambertMaterial({ color: color })
             // this.material = new THREE.MeshBasicMaterial( { color: 0x00ff00 } )
             // this.material = new THREE.MeshNormalMaterial()
             this.mesh = new THREE.Mesh(this.geometry, this.material)

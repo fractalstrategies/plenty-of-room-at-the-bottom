@@ -6,12 +6,13 @@ import Renderer from './Renderer'
 import Camera from './Camera'
 import GUI from './GUI'
 
-import Scale from './Scale'
-import AtomicFloor from './AtomicFloor'
 import Atom from './Atom'
+import AtomicFloor from './AtomicFloor'
+import Cube from './Cube'
+import Scale from './Scale'
 import Light from './Light'
+import Text from './Text'
 // import Sky from './Sky'
-// import Text from './Text'
 
 export default function Canvas(props) {
   const container = useRef(null)
@@ -26,9 +27,14 @@ export default function Canvas(props) {
     // const controls = new OrbitControls(camera, renderer.domElement)
     var light1 = new Light({
       scene,
-      position: { x: 10, y: 0, z: 25 },
+      position: { x: 13, y: 5, z: 60 },
       color: 'rgb(255, 255, 255)',
     })
+    const gridHelper = new THREE.GridHelper(200, 50)
+    scene.add(gridHelper)
+
+    const text = new Text({ scene, text: 'jello' })
+    // scene.add(text)
 
     // new Sky({ scene: scene })
 
@@ -63,6 +69,13 @@ export default function Canvas(props) {
     //     orbitalFields: '1p',
     // })
 
+    const cube1 = new Cube({
+      scene: scene,
+      size: 5,
+      color: 'blue',
+      offset: { x: 0, y: 5, z: 40 }
+    })
+
     new Scale({
       scene,
       position: { x: -10, y: 0, z: 0 },
@@ -70,7 +83,7 @@ export default function Canvas(props) {
     })
 
     // GUI(scene, camera, { atoms: [atom1] })
-    GUI(scene, light1.light, camera, { atoms: [atom1] })
+    GUI(scene, light1.light, camera, { atoms: [atom1], cube: cube1 })
 
     // this.setState(prevState => {
     //   prevState.scene = scene
@@ -81,6 +94,9 @@ export default function Canvas(props) {
       atom1.animate()
       // atom2.animate()
       renderer.render(scene, camera)
+      cube1.mesh.rotation.x += 0.01;
+      cube1.mesh.rotation.y += 0.01;
+
     }
     animate()
 
